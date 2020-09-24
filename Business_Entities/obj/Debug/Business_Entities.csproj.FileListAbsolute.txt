@@ -75,6 +75,5 @@ C:\Users\Cspiindia.robot77\Desktop\WiproOngoing\FADV_TouchlessWipro\Business_Ent
 C:\Users\Cspiindia.robot77\Desktop\WiproOngoing\FADV_TouchlessWipro\Business_Entities\obj\Debug\Business_Entities.pdb
 C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\Business_Entities\bin\Debug\Business_Entities.dll
 C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\Business_Entities\bin\Debug\Business_Entities.pdb
-C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\Business_Entities\obj\Debug\Business_Entities.csprojResolveAssemblyReference.cache
 C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\Business_Entities\obj\Debug\Business_Entities.dll
 C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\Business_Entities\obj\Debug\Business_Entities.pdb

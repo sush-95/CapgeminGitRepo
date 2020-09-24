@@ -609,10 +609,11 @@ namespace DataAccess_Utility
             int Value = 0;
             try
             {
+              
                 Get_Data_Utility getObj = new Get_Data_Utility();
                 // string sql = "select count(*) from tbl_cap_gemini where Candidte_Id='" + Candidte_Id + "' and Check_Initiated='" + Check_Initiated + "' ;";
                 string sql = "select * from tbl_cap_gemini where Candidate_ID='" + Candidte_Id.Trim() + "';";
-                if (getObj.getIsExist(sql) == 0)
+                if ((getObj.GetListOnCandiadteID(Candidte_Id.Trim())).Count == 0)
                 {
                     List<tbl_college_details> lstObj = new List<tbl_college_details>();
                     fadv_touchlessEntities entity = new fadv_touchlessEntities();
@@ -629,10 +630,11 @@ namespace DataAccess_Utility
                     List<tbl_cap_gemini> capList = getObj.GetListOnCandiadteID(Candidte_Id.Trim());
                     if (capList.Count != 0)
                     {
-                        DateTime entrydate = Convert.ToDateTime(capList[0].Entry_Date);
-                        if ((DateTime.Now - entrydate).Hours > 27)
+                        DateTime entrydate;
+                        DateTime.TryParse(capList[0].EntryDate, out entrydate);                     
+                        if ((DateTime.Now - entrydate).Days > 0&& (DateTime.Now - entrydate).Hours>6)
                         {
-
+                            Value = 2;
                         }
                     }
                 }

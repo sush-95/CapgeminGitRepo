@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="APIManeger.cs" />
     <Compile Include="CaseCreationProcessor.cs" />
+    <Compile Include="Email_Processor.cs" />
     <Compile Include="ExecuteProcess.cs" />
     <Compile Include="FilePath_Container.cs" />
     <Compile Include="FileUtility.cs" />

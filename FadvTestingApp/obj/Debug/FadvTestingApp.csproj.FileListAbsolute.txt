@@ -1,0 +1,6 @@
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\bin\Debug\FadvTestingApp.exe.config
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\bin\Debug\FadvTestingApp.exe
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\bin\Debug\FadvTestingApp.pdb
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\obj\Debug\FadvTestingApp.csprojResolveAssemblyReference.cache
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\obj\Debug\FadvTestingApp.exe
+C:\Users\Cspiindia.robot77\Desktop\CapGeminiOngoing\FADV_TouchlessWipro\FadvTestingApp\obj\Debug\FadvTestingApp.pdb

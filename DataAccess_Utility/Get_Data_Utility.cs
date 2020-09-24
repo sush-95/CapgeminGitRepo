@@ -24,15 +24,15 @@ namespace DataAccess_Utility
             fadv_touchlessEntities entity = new fadv_touchlessEntities();
             //lstObj = entity.tbl_input_request_data.SqlQuery("select * from tbl_input_request_data where ImportKey=" + ImportKey + " and Request_ID not in (select request_id from tbl_initiation_tracker)").ToList<tbl_input_request_data>();
             string Query = "select * from tbl_cap_gemini where Candidate_ID='" + CandidateID + "'";
-            List<tbl_cap_gemini> list = entity.Database.SqlQuery<tbl_cap_gemini>(Query).ToList<tbl_cap_gemini>(); ;
+            List<tbl_cap_gemini> list = entity.Database.SqlQuery<tbl_cap_gemini>(Query).ToList<tbl_cap_gemini>(); 
             return (list.Count > 1) ? true : false;
         }
         public List<tbl_cap_gemini> GetListOnCandiadteID(string CandidateID)
         {
             fadv_touchlessEntities entity = new fadv_touchlessEntities();
             //lstObj = entity.tbl_input_request_data.SqlQuery("select * from tbl_input_request_data where ImportKey=" + ImportKey + " and Request_ID not in (select request_id from tbl_initiation_tracker)").ToList<tbl_input_request_data>();
-            string Query = "select Candidate_ID,First_Name,Last_Name,Entry_Date from tbl_cap_gemini where Candidate_ID='" + CandidateID + "'";
-            List<tbl_cap_gemini> list = entity.Database.SqlQuery<tbl_cap_gemini>(Query).ToList<tbl_cap_gemini>(); ;
+            string Query = "select Candidate_ID,First_Name,Last_Name,DATE_FORMAT(Entry_Date,'%Y-%m-%d %T.%f') as EntryDate from tbl_cap_gemini where Candidate_ID='" + CandidateID + "'";
+            List<tbl_cap_gemini> list = entity.Database.SqlQuery<tbl_cap_gemini>(Query).ToList<tbl_cap_gemini>(); 
             return list;
         }
         public List<tbl_wipro_campus_data> Get_UnProcessedRequests()
@@ -567,7 +567,7 @@ namespace DataAccess_Utility
         public string Candidate_ID { get; set; }
         public string First_Name { get; set; }
         public string Last_Name { get; set; }
-        public string Entry_Date { get; set; }
+        public string EntryDate { get; set; }
     }
 
 }

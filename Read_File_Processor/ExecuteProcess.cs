@@ -142,7 +142,7 @@ namespace Read_File_Processor
             }
 
         }
-      
+
         public void Execute_Json_YetToStart_Process_Download()
         {
             Get_Data_Utility obj = new Get_Data_Utility();
@@ -150,56 +150,90 @@ namespace Read_File_Processor
             GetCapGeminiParameters_Freshcase paramsObj = new GetCapGeminiParameters_Freshcase();
             //objDML.Add_Exception_Log("", "Execute_Excel_YetToStart_Process_Download");
             JsonCreater JsonCreater = new Read_File_Processor.JsonCreater();
-            long ResId = 0;
+
             try
             {
-                string strDateKey = System.DateTime.Now.ToString("yyyyMMddHHmmss"),output=string.Empty;
+                string strDateKey = System.DateTime.Now.ToString("yyyyMMddHHmmss"), output = string.Empty;
                 // GET RESONSE JSON TO BE PROCESSED 
                 List<tbl_response_detail> lstResponse = obj.Get_Response_Data_ToBe_Process(FilePath_Container.ServiceId_WiproDownload);
                 if (lstResponse.Count > 0)
                 {
-                    JObject DownloadJboj = JObject.Parse(lstResponse[0].response_json);
-                    JArray DataArray = JArray.Parse(DownloadJboj["data"][0]["result"]["downloadDetails"].ToString());
-                    foreach (var item in DataArray)
+                    foreach (tbl_response_detail res in lstResponse)
                     {
-                        string candidateId = item["candidateId"].ToString();
-                        string assigedTo = item["assigedTo"].ToString();
-                        string Activity = item["Activity"].ToString();
-                        string dueDate = item["dueDate"].ToString();
-                        string startDate = item["startDate"].ToString();
-                        string firstName = item["firstName"].ToString();
-                        string lastName = item["lastName"].ToString();
-                        string activityCreationDate = item["activityCreationDate"].ToString();
-                        string placeOfPosting = item["placeOfPosting"].ToString();
-                        string sbu = item["sbu"].ToString();
-                        string bvgAgency = item["bvgAgency"].ToString();
-                        objDML.InsertCapgeminiTable()
+                        JObject DownloadJboj = JObject.Parse(res.response_json);
+                        string BoitId = DownloadJboj["metadata"]["botId"].ToString();
+                        Email_Processor mailobj = new Email_Processor();
+                        JArray DataArray = JArray.Parse(DownloadJboj["data"][0]["result"]["downloadDetails"].ToString());
+                        foreach (var item in DataArray)
+                        {
+                            string candidateId = item["candidateId"].ToString();
+                            string assigedTo = item["assigedTo"].ToString();
+                            string Activity = item["Activity"].ToString();
+                            string dueDate = item["dueDate"].ToString();
+                            string startDate = item["startDate"].ToString();
+                            string firstName = item["firstName"].ToString();
+                            string lastName = item["lastName"].ToString();
+                            string activityCreationDate = item["activityCreationDate"].ToString();
+                            string placeOfPosting = item["placeOfPosting"].ToString();
+                            string sbu = item["sbu"].ToString();
+                            string bgvAgency = item["bvgAgency"].ToString();
+                           int checkstat=objDML.InsertCapgeminiTable(candidateId, assigedTo, Activity, dueDate, startDate, firstName, lastName, activityCreationDate, placeOfPosting, sbu, bgvAgency, BoitId);
+
+                            if (checkstat == 2)
+                            {
+
+                                mailobj.SendMail("", "", "");
+                            }
+                        }
+                        //  objDML.Update_Response_Status(res.id);
                     }
+
+
                 }
                 List<tbl_cap_gemini> CapGeminiList = obj.Get_UnProcessedRequestsCapGemini();
                 foreach (var item in CapGeminiList)
                 {
-                    if (!obj.IsCapgeminiDuplicate(item.Candidate_ID))
+                    if (obj.IsCapgeminiDuplicate(item.Candidate_ID))
                     {
-                        string queueMessageId = Guid.NewGuid().ToString();
-                        string queueServiceId = FilePath_Container.FreshCase;
-                        output = JsonCreater.getDetails_FreshCase(paramsObj.GetCapgeminiParameter(item.Candidate_ID,item.First_Name,item.Last_Name),queueMessageId, queueServiceId);
-                        int iDML = objDML.Add_Request_Json_Detail(queueMessageId, queueServiceId, output);
-                        if (iDML == 1)
+                        if (CheckIfRequestSentOrnot(item.Candidate_ID))
                         {
-                            bool ret = Write_JSON_TO_RABBIT_MQ(output);
-                            objDML.Add_Exception_Log("Capgemini: 1st attempt for CandidateId : " + item.Candidate_ID + " Sub- Login : Capgemini has been sent to rabbitMQ ", item.Candidate_ID);
-                            output = ret ? "Success" : "Failed";
-                        }
+                            string queueMessageId = Guid.NewGuid().ToString();
+                            string queueServiceId = FilePath_Container.FreshCase;
+                            output = JsonCreater.getDetails_FreshCase(paramsObj.GetCapgeminiParameter(item.Candidate_ID, item.First_Name, item.Last_Name), queueMessageId, queueServiceId);
+                            int iDML = objDML.Add_Request_Json_Detail(queueMessageId, queueServiceId, output);
+                            if (iDML == 1)
+                            {
+                                bool ret = Write_JSON_TO_RABBIT_MQ(output);
+                                objDML.Add_Exception_Log("Capgemini: 1st attempt for CandidateId : " + item.Candidate_ID + " Sub- Login : Capgemini has been sent to rabbitMQ ", item.Candidate_ID);
+                                output = ret ? "Success" : "Failed";
+                            }
+                        }                       
                     }
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                
             }
         }
+        public bool CheckIfRequestSentOrnot(string cadidateId)
+        {
+            bool res = false;
+            try
+            {
+                fadv_touchlessEntities fadv = new fadv_touchlessEntities();
+                string matchstring = "\"candidateId\":\"" + cadidateId.Replace("\"", "") + "\"";
+                List<tbl_request_details> request = fadv.tbl_request_details.Where(x => x.json_text.Replace(" ", "").Contains(matchstring)).ToList();
+                if (request.Count == 0)
+                {
+                    res = true;
+                }
+            }
+            catch { }
+            return res;
+        }
+
         public void SendCaseDataToRabitMQ(string sublogin, string resumeid, string empname)
         {
             //try
@@ -788,7 +822,7 @@ namespace Read_File_Processor
             catch (Exception ex)
             {
 
-                output = "Wipro exception : " + ex.Message.ToString();
+                output = "CapGemini : " + ex.Message.ToString();
                 ////// Exception Log ///
                 //DML_Utility objDML = new DML_Utility();
                 //int iException = objDML.Add_Exception_Log(ex.Message, "Write_JSON_TO_Download");

@@ -61,7 +61,7 @@ namespace CapGemini_Service
                 //objDML.Add_Exception_Log("Service Start", "");
                 ExecuteProcess obj = new ExecuteProcess();
                 Get_Data_Utility objGet = new Get_Data_Utility();
-                 string error = obj.Write_JSON_TO_Download();
+                 //string error = obj.Write_JSON_TO_Download();
                 //objDML.Add_Exception_Log("Download Complete", "");
 
                 System.Threading.Thread.Sleep(2000);

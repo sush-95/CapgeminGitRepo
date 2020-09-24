@@ -174,11 +174,8 @@ namespace Read_File_Processor
 
                 List<tbl_response_detail> lstResponse = obj.Get_Response_Data_ToBe_Process(FilePath_Container.FreshCase);
                 if (lstResponse.Count > 0)
-                {
-                    //objDML.Add_Exception_Log(lstResponse.Count.ToString(), "");
-
-                    string MessageId = "";
-                    //MessageId.Split('a').Distinct;
+                { 
+                    string MessageId = "";                   
                     string ServiceId = "";
 
                     string ResJson = "";
@@ -190,60 +187,17 @@ namespace Read_File_Processor
                         ReqId = (long)res.request_id;
                         ResJson = res.response_json;
                     }
-                    // objDML.Add_Exception_Log("Before API Call", "");
-
-                    string responce_MessageId = "";
-                    string responce_ServiceId = "";
-                    string Response_Data = "";
-                    //string path = Read_Json_Case_Creation(ResJson, out responce_MessageId, out responce_ServiceId);
-                    //objDML.Add_Exception_Log(responce_MessageId, responce_ServiceId);
-
                     string result = Read_Json_DataForCaseCreation(ResJson, "metadata", "status", "success");
-                    string requestId = Read_Json_TagWise(ResJson, "metadata", "requestId");
-                    //string details = Read_Json_TagWise(result, "success" );
-                    //string status = Read_Json_Case_Creation_TagValue(ResJson, "Status", "Value");
-                    //objDML.Add_Exception_Log(responce_MessageId, responce_ServiceId);
-
-                    //objDML.Add_Exception_Log(status, "");
-                    //objDML.Add_Exception_Log(responce_ServiceId, "");
+                    string requestId = Read_Json_TagWise(ResJson, "metadata", "requestId");                  
                     fadv_touchlessEntities entit = new fadv_touchlessEntities();
-
-
                     if (result.ToLower() == "true")
                     {
-                        //if (responce_ServiceId.ToLower() == "Wiprofreshcase")
-                        //{
-
-                        //    string Candidte_Id = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Candidte_Id");
-                        //    string Check_Initiated = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Check_Initiated");
-
-                        //    tbl_Wipro_Details CandidateDetails = obj.Get_WiproCandiateDetails(Candidte_Id, Check_Initiated);
-                        //    string outputParametrs = ConfigurationManager.AppSettings["outputParametrs"];
-                        //    Dictionary<string, string> paravalues = getWiproPackageName(Check_Initiated, Candidte_Id, CandidateDetails.Employee_Name, outputParametrs);
-                        //    string PackageName = (paravalues.Keys.Contains("package")) ? paravalues["package"] : "";
-                        //    string sbu = (paravalues.Keys.Contains("sbu")) ? paravalues["sbu"] : "";
-
-                        //    string clientID = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Client_ID");
-                        //    string clientName = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Client_Name");
-                        //    string FilePath = Read_Json_Case_Creation_TagValue(ResJson, "Data", "FilePath").Replace("\\", "\\\\")+"\\\\";
-                        //    string PONumber = Read_Json_Case_Creation_TagValue(ResJson, "Data", "PO_Number");
-                        //    string Database_Sent = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Database_Sent");
-                        //    long longClID = Convert.ToInt32(clientID);
-                        //    List<tbl_sbu_master> SBUList = entit.tbl_sbu_master.Where(x => x.SBU_Name == sbu && x.ClientID == longClID).ToList<tbl_sbu_master>();
-                        //    string SBUIID = "0";
-                        //    if (SBUList.Count > 0)
-                        //        SBUIID = SBUList[0].SBUID.ToString();
-                        //    if (Convert.ToInt64(SBUIID) > 0)
-                        //        output = Create_Case_Creation_Json(ReqId, ResId, CandidateDetails, PackageName, Database_Sent, PONumber, FilePath, clientID, SBUIID, clientName, sbuName: sbu, PackageName: PackageName);
-                        // }
+                      
                     }
                     else
                     {
                         using (fadv_touchlessEntities entities = new fadv_touchlessEntities())
                         {
-                            //string ReqMsg = Read_Json_Case_Creation_TagValue(ResJson, "Data", "Request_Id");
-                            ////objDML.Add_Exception_Log(ReqMsg, "");
-
                             tbl_request_details processData = entities.tbl_request_details.Where(x => x.json_text.Contains(requestId)).First();
                             string json = processData.json_text;
                             string attempt = Read_Json_TagWise(json, "metadata", "attempt");
@@ -259,18 +213,16 @@ namespace Read_File_Processor
                                 int iDML = objDML.Add_Request_Json_Detail(queueMessageId, queueServiceId, output);
                                 if (iDML == 1)
                                 {
-                                   string resumeno=(string)rss["data"][0]["taskSpecs"]["capgeminiDownloadData"]["resumeNumber"];
-                                    string sublogin = (string)rss["data"][0]["taskSpecs"]["capgeminiDownloadData"]["subLogin"];
+                                   string resumeno=(string)rss["data"][0]["taskSpecs"]["candidateId"];
+                                   
                                     RabbitMQ_Utility objQueue = new RabbitMQ_Utility();
                                     string error;
-                                    //ret = objQueue.Rabbit_Send(json, "Request", "localhost", out error);
-                                    objDML.Add_Exception_Log("Wipro: 2st attempt for Resume No : : " + resumeno + " Sub- Login : "+sublogin+" has been sent to rabbitMQ ",resumeno);
+                                    
+                                    objDML.Add_Exception_Log("Capgemini: 2nd attempt for Candidate Id : : " + resumeno + " has been sent to rabbitMQ ",resumeno);
                                     objQueue.Rabbit_Send(updatedJson, RabbitMQ_Utility.RabbitMQRequestQueue, RabbitMQ_Utility.RabbitMQUrl, out error);
                                 }
                             }
-                            //processData.active = 0;
-                            //entities.SaveChanges();
-                            //objDML.Add_Exception_Log("After FailedJson", "");
+                         
 
                         }
                     }
