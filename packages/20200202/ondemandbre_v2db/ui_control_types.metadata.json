@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"ondemandbre_v2db.ui_control_types"},{"v":2,"key":{"active":1},"name":"UIControlType_active_IDX","ns":"ondemandbre_v2db.ui_control_types"}],"uuid":"bbf6d488a0224656a61542eea826ab73"}

@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"ondemandbre_v2db.rule_definitions"},{"v":2,"key":{"active":1},"name":"RuleDefinition_active_IDX","ns":"ondemandbre_v2db.rule_definitions"}],"uuid":"b352206143264878a98b6fca6f11c024"}

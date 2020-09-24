@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fadv_touchlessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="fadv_touchlessEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_initiation_tracker" EntityType="fadv_touchlessModel.tbl_initiation_tracker" />
+    <EntitySet Name="tbl_input_request_data" EntityType="fadv_touchlessModel.tbl_input_request_data" />
+    <EntitySet Name="tbl_exception_log" EntityType="fadv_touchlessModel.tbl_exception_log" />
+    <EntitySet Name="tbl_request_details" EntityType="fadv_touchlessModel.tbl_request_details" />
+    <EntitySet Name="tbl_college_details" EntityType="fadv_touchlessModel.tbl_college_details" />
+    <EntitySet Name="tbl_config_value" EntityType="fadv_touchlessModel.tbl_config_value" />
+    <EntitySet Name="tbl_response_detail" EntityType="fadv_touchlessModel.tbl_response_detail" />
+    <EntitySet Name="tbl_yettostart_casecreation_data" EntityType="fadv_touchlessModel.tbl_yettostart_casecreation_data" />
+    <EntitySet Name="tbl_mislog_count" EntityType="fadv_touchlessModel.tbl_mislog_count" />
+    <EntitySet Name="tbl_request_tracker" EntityType="fadv_touchlessModel.tbl_request_tracker" />
+    <EntitySet Name="tbl_requests" EntityType="fadv_touchlessModel.tbl_requests" />
+  </EntityContainer>
+  <EntityType Name="tbl_initiation_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="request_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="req_date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="candidate_id" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="associate_id" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="bgv_type" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="package" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="account" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="allocated_to" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="docs_download" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="crn" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="creation_date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="drug_panel" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="req_date1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_input_request_data">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImportKey" Type="Int64" />
+    <Property Name="Request_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Candidate_ID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Associate_Id" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BGV_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DOJ" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="BU" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Department" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Group" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Account" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Project" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Components" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Pre_BGV_Initiated_Date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CE_BGV_Initiated_Date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CE_Available" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Vendor_Status" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Additional_Payment_Status" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="HR_POC" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Work_Location" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Report_uploaded_date" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Updated_On" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="SByte" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_exception_log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exception_log" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="function_name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_request_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="messageid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="json_text" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="request_type" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_college_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reqid" Type="Int64" />
+    <Property Name="resid" Type="Int64" />
+    <Property Name="college" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="degree" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="field_source" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+    <Property Name="createdon" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_config_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="configstring" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="configtype" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+    <Property Name="createdon" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResponseQueue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RequestQueue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_response_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="request_id" Type="Int64" />
+    <Property Name="response_json" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="SByte" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="message_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="service_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_yettostart_casecreation_data">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="queue_request_id" Type="Int64" />
+    <Property Name="cognizent_tech_solution" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="clientcode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="candidate_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="client_ref_no" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="bvg_type" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="package" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="specification" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="project_id" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="project_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="doj" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="request_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="associate_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="candidate_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="employee_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="account_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tensse" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="actual_case_created" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="college_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="college_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="degree_type_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="degree_type_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="reference_type_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="reference_type_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="company_name_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="company_name_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="id_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="id_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="employment_type_ut" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="employment_type_cvt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="date_of_birth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="father_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mobile_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="current_address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="permanent_address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="longest_stay_address" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="SByte" Nullable="false" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LOA_Status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="responseId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="tbl_mislog_count">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="rowscount" Type="Int64" />
+    <Property Name="createdOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_request_tracker">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Json_Data" Type="String" Nullable="false" MaxLength="16777215" FixedLength="false" Unicode="false" />
+    <Property Name="Queue_Flag" Type="Int32" />
+    <Property Name="Operation_Date" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="tbl_requests">
+    <Key>
+      <PropertyRef Name="RequestID" />
+      <PropertyRef Name="PartitionKey" />
+    </Key>
+    <Property Name="RequestID" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent_RequestID" Type="Decimal" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="CRN_Number" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Middle_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Ref_No" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Case_Date" Type="DateTime" />
+    <Property Name="Subject_Detail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Subject_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Is_Date_of_Birth" Type="SByte" />
+    <Property Name="Date_Of_Birth" Type="DateTime" />
+    <Property Name="Type_Of_Check" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Candidate_Authorization_Letter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Package_Type" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Srt_Data" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Date_Created" Type="DateTime" Nullable="false" />
+    <Property Name="Date_Modified" Type="DateTime" />
+    <Property Name="Is_Active" Type="Boolean" />
+    <Property Name="SBUID" Type="Int64" />
+    <Property Name="LOA_Submitted" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="BVF_Submitted" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="CRN_CreateDate" Type="DateTime" />
+    <Property Name="PartitionKey" Type="SByte" Nullable="false" />
+    <Property Name="JSON_Data" Type="String" MaxLength="50000" FixedLength="false" Unicode="false" />
+    <Property Name="status_message" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DEPENDENT_CHILD_ID" Type="Int64" />
+    <Property Name="Request_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

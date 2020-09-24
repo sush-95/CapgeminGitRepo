@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"ondemandbre_v2db.user_auth"},{"v":2,"key":{"active":1},"name":"UserAuth_active_IDX","ns":"ondemandbre_v2db.user_auth"}],"uuid":"1e25da908c39405d85ea37fdc4ed5683"}

@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"ondemandbre_v2db.user_roles"},{"v":2,"key":{"active":1},"name":"UserRole_active_IDX","ns":"ondemandbre_v2db.user_roles"}],"uuid":"0d38b5b437b34dbb9e9027aa6e477046"}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a48f54f07b694fbb8e5b316042863ef8" Name="Diagram1" ZoomLevel="50">
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_initiation_tracker" Width="1.5" PointX="2.875" PointY="0.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_input_request_data" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_exception_log" Width="1.5" PointX="4.625" PointY="3" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_request_details" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_college_details" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_config_value" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_response_detail" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_mislog_count" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_request_tracker" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_requests" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_sbu_master" Width="1.5" PointX="9.375" PointY="10.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_request_state_instance" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_document_upload" Width="2.875" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_document_data" Width="3.25" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="fadv_touchlessModel.tbl_yettostart_casecreation_data" Width="1.5" PointX="0.75" PointY="7.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

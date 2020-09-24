@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"ondemandbre_v2db.field_definitions"},{"v":2,"key":{"active":1},"name":"FieldDefinition_active_IDX","ns":"ondemandbre_v2db.field_definitions"}],"uuid":"7be606d580b341ba9174c78ec159a9c1"}

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5CF956BD-7131-4301-88E8-7DDC89650CC6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccess_Utility</RootNamespace>
+    <AssemblyName>DataAccess_Utility</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.3.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.18\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.18\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DML_Utility.cs" />
+    <Compile Include="FADV_TouchlessModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FADV_TouchlessModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FADV_TouchlessModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FADV_TouchlessModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FADV_TouchlessModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Data_Utility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tbl_college_details.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_config_value.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_exception_log.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_initiation_tracker.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_input_request_data.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_mislog_count.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_requests.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_request_details.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_request_tracker.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_response_detail.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_yettostart_casecreation_data.cs">
+      <DependentUpon>FADV_TouchlessModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="FADV_TouchlessModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FADV_TouchlessModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="FADV_TouchlessModel.edmx.diagram">
+      <DependentUpon>FADV_TouchlessModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FADV_TouchlessModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FADV_TouchlessModel.edmx</DependentUpon>
+      <LastGenOutput>FADV_TouchlessModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FADV_TouchlessModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FADV_TouchlessModel.edmx</DependentUpon>
+      <LastGenOutput>FADV_TouchlessModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business_Entities\Business_Entities.csproj">
+      <Project>{9febe7ed-bdf8-4a70-ae27-28b39e2f43e9}</Project>
+      <Name>Business_Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

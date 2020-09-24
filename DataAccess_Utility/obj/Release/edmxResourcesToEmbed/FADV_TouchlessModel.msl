@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fadv_touchlessModelStoreContainer" CdmEntityContainer="fadv_touchlessEntities">
+    <EntitySetMapping Name="tbl_initiation_tracker">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_initiation_tracker">
+        <MappingFragment StoreEntitySet="tbl_initiation_tracker">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="req_date1" ColumnName="req_date1" />
+          <ScalarProperty Name="drug_panel" ColumnName="drug_panel" />
+          <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+          <ScalarProperty Name="crn" ColumnName="crn" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="docs_download" ColumnName="docs_download" />
+          <ScalarProperty Name="allocated_to" ColumnName="allocated_to" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="account" ColumnName="account" />
+          <ScalarProperty Name="package" ColumnName="package" />
+          <ScalarProperty Name="bgv_type" ColumnName="bgv_type" />
+          <ScalarProperty Name="associate_id" ColumnName="associate_id" />
+          <ScalarProperty Name="candidate_id" ColumnName="candidate_id" />
+          <ScalarProperty Name="req_date" ColumnName="req_date" />
+          <ScalarProperty Name="request_id" ColumnName="request_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_input_request_data">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_input_request_data">
+        <MappingFragment StoreEntitySet="tbl_input_request_data">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Last_Updated_On" ColumnName="Last_Updated_On" />
+          <ScalarProperty Name="Report_uploaded_date" ColumnName="Report_uploaded_date" />
+          <ScalarProperty Name="Work_Location" ColumnName="Work_Location" />
+          <ScalarProperty Name="HR_POC" ColumnName="HR_POC" />
+          <ScalarProperty Name="Additional_Payment_Status" ColumnName="Additional_Payment_Status" />
+          <ScalarProperty Name="Vendor_Status" ColumnName="Vendor_Status" />
+          <ScalarProperty Name="CE_Available" ColumnName="CE_Available" />
+          <ScalarProperty Name="CE_BGV_Initiated_Date" ColumnName="CE_BGV_Initiated_Date" />
+          <ScalarProperty Name="Pre_BGV_Initiated_Date" ColumnName="Pre_BGV_Initiated_Date" />
+          <ScalarProperty Name="Components" ColumnName="Components" />
+          <ScalarProperty Name="Project" ColumnName="Project" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Account_Group" ColumnName="Account_Group" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="BU" ColumnName="BU" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BGV_Type" ColumnName="BGV_Type" />
+          <ScalarProperty Name="Associate_Id" ColumnName="Associate_Id" />
+          <ScalarProperty Name="Candidate_ID" ColumnName="Candidate_ID" />
+          <ScalarProperty Name="Request_ID" ColumnName="Request_ID" />
+          <ScalarProperty Name="ImportKey" ColumnName="ImportKey" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_exception_log">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_exception_log">
+        <MappingFragment StoreEntitySet="tbl_exception_log">
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="function_name" ColumnName="function_name" />
+          <ScalarProperty Name="exception_log" ColumnName="exception_log" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_request_details">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_request_details">
+        <MappingFragment StoreEntitySet="tbl_request_details">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="request_type" ColumnName="request_type" />
+          <ScalarProperty Name="json_text" ColumnName="json_text" />
+          <ScalarProperty Name="messageid" ColumnName="messageid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_college_details">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_college_details">
+        <MappingFragment StoreEntitySet="tbl_college_details">
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="field_source" ColumnName="field_source" />
+          <ScalarProperty Name="degree" ColumnName="degree" />
+          <ScalarProperty Name="college" ColumnName="college" />
+          <ScalarProperty Name="resid" ColumnName="resid" />
+          <ScalarProperty Name="reqid" ColumnName="reqid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_config_value">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_config_value">
+        <MappingFragment StoreEntitySet="tbl_config_value">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="RequestQueue" ColumnName="RequestQueue" />
+          <ScalarProperty Name="ResponseQueue" ColumnName="ResponseQueue" />
+          <ScalarProperty Name="createdon" ColumnName="createdon" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="configtype" ColumnName="configtype" />
+          <ScalarProperty Name="configstring" ColumnName="configstring" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_response_detail">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_response_detail">
+        <MappingFragment StoreEntitySet="tbl_response_detail">
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="message_id" ColumnName="message_id" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="response_json" ColumnName="response_json" />
+          <ScalarProperty Name="request_id" ColumnName="request_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_mislog_count">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_mislog_count">
+        <MappingFragment StoreEntitySet="tbl_mislog_count">
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="rowscount" ColumnName="rowscount" />
+          <ScalarProperty Name="filePath" ColumnName="filePath" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_request_tracker">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_request_tracker">
+        <MappingFragment StoreEntitySet="tbl_request_tracker">
+          <ScalarProperty Name="Operation_Date" ColumnName="Operation_Date" />
+          <ScalarProperty Name="Queue_Flag" ColumnName="Queue_Flag" />
+          <ScalarProperty Name="Json_Data" ColumnName="Json_Data" />
+          <ScalarProperty Name="TrackerID" ColumnName="TrackerID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_requests">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_requests">
+        <MappingFragment StoreEntitySet="tbl_requests">
+          <ScalarProperty Name="status_message" ColumnName="status_message" />
+          <ScalarProperty Name="JSON_Data" ColumnName="JSON_Data" />
+          <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+          <ScalarProperty Name="CRN_CreateDate" ColumnName="CRN_CreateDate" />
+          <ScalarProperty Name="BVF_Submitted" ColumnName="BVF_Submitted" />
+          <ScalarProperty Name="LOA_Submitted" ColumnName="LOA_Submitted" />
+          <ScalarProperty Name="SBUID" ColumnName="SBUID" />
+          <ScalarProperty Name="Is_Active" ColumnName="Is_Active" />
+          <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="Srt_Data" ColumnName="Srt_Data" />
+          <ScalarProperty Name="Package_Type" ColumnName="Package_Type" />
+          <ScalarProperty Name="Candidate_Authorization_Letter" ColumnName="Candidate_Authorization_Letter" />
+          <ScalarProperty Name="Type_Of_Check" ColumnName="Type_Of_Check" />
+          <ScalarProperty Name="Date_Of_Birth" ColumnName="Date_Of_Birth" />
+          <ScalarProperty Name="Is_Date_of_Birth" ColumnName="Is_Date_of_Birth" />
+          <ScalarProperty Name="Subject_Type" ColumnName="Subject_Type" />
+          <ScalarProperty Name="Subject_Detail" ColumnName="Subject_Detail" />
+          <ScalarProperty Name="Case_Date" ColumnName="Case_Date" />
+          <ScalarProperty Name="Client_Ref_No" ColumnName="Client_Ref_No" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Middle_Name" ColumnName="Middle_Name" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="CRN_Number" ColumnName="CRN_Number" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Parent_RequestID" ColumnName="Parent_RequestID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_sbu_master">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_sbu_master">
+        <MappingFragment StoreEntitySet="tbl_sbu_master">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="SBU_Name" ColumnName="SBU_Name" />
+          <ScalarProperty Name="SBUID" ColumnName="SBUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_request_state_instance">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_request_state_instance">
+        <MappingFragment StoreEntitySet="tbl_request_state_instance">
+          <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+          <ScalarProperty Name="IS_Review" ColumnName="IS_Review" />
+          <ScalarProperty Name="Is_Current" ColumnName="Is_Current" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_document_upload">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_document_upload">
+        <MappingFragment StoreEntitySet="tbl_document_upload">
+          <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+          <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="Requestid" ColumnName="Requestid" />
+          <ScalarProperty Name="Document_Path" ColumnName="Document_Path" />
+          <ScalarProperty Name="UploadID" ColumnName="UploadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_document_data">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_document_data">
+        <MappingFragment StoreEntitySet="tbl_document_data">
+          <ScalarProperty Name="PartitionKey" ColumnName="PartitionKey" />
+          <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="JSON_Data" ColumnName="JSON_Data" />
+          <ScalarProperty Name="Data_Sequence" ColumnName="Data_Sequence" />
+          <ScalarProperty Name="Document_Version" ColumnName="Document_Version" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="Document_Data_Entry_ID" ColumnName="Document_Data_Entry_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_yettostart_casecreation_data">
+      <EntityTypeMapping TypeName="fadv_touchlessModel.tbl_yettostart_casecreation_data">
+        <MappingFragment StoreEntitySet="tbl_yettostart_casecreation_data">
+          <ScalarProperty Name="UT_Nature_Of_Location_Permanent" ColumnName="UT_Nature_Of_Location_Permanent" />
+          <ScalarProperty Name="UT_Nature_Of_Location_Current" ColumnName="UT_Nature_Of_Location_Current" />
+          <ScalarProperty Name="UT_Current_Address_POS" ColumnName="UT_Current_Address_POS" />
+          <ScalarProperty Name="tbl_yettostart_casecreation_datacol" ColumnName="tbl_yettostart_casecreation_datacol" />
+          <ScalarProperty Name="UT_Permanent_Address_POS" ColumnName="UT_Permanent_Address_POS" />
+          <ScalarProperty Name="Longest_Stay_Address_POS_UT" ColumnName="Longest_Stay_Address_POS_UT" />
+          <ScalarProperty Name="Diploma_UT_Education_Type" ColumnName="Diploma_UT_Education_Type" />
+          <ScalarProperty Name="Diploma_UT_Percentage" ColumnName="Diploma_UT_Percentage" />
+          <ScalarProperty Name="Diploma_UT_University" ColumnName="Diploma_UT_University" />
+          <ScalarProperty Name="Diploma_UT_College" ColumnName="Diploma_UT_College" />
+          <ScalarProperty Name="Diploma_UT_EducationPeriod" ColumnName="Diploma_UT_EducationPeriod" />
+          <ScalarProperty Name="Diploma_UT_DegreeType" ColumnName="Diploma_UT_DegreeType" />
+          <ScalarProperty Name="Longest_Stay_Address_UT" ColumnName="Longest_Stay_Address_UT" />
+          <ScalarProperty Name="Tenth_CVT_Details" ColumnName="Tenth_CVT_Details" />
+          <ScalarProperty Name="Tenth_CVT_Type" ColumnName="Tenth_CVT_Type" />
+          <ScalarProperty Name="Twelve_CVT_Details" ColumnName="Twelve_CVT_Details" />
+          <ScalarProperty Name="Twelve_CVT_Type" ColumnName="Twelve_CVT_Type" />
+          <ScalarProperty Name="Diploma_CVT_Deatils" ColumnName="Diploma_CVT_Deatils" />
+          <ScalarProperty Name="Diploma_CVT_Type" ColumnName="Diploma_CVT_Type" />
+          <ScalarProperty Name="CVT_OFAC" ColumnName="CVT_OFAC" />
+          <ScalarProperty Name="CVT_SAM" ColumnName="CVT_SAM" />
+          <ScalarProperty Name="CVT_NSR" ColumnName="CVT_NSR" />
+          <ScalarProperty Name="CVT_Facis" ColumnName="CVT_Facis" />
+          <ScalarProperty Name="CVT_Professional_Company" ColumnName="CVT_Professional_Company" />
+          <ScalarProperty Name="CVT_Professional_ID" ColumnName="CVT_Professional_ID" />
+          <ScalarProperty Name="CVT_Address_Duration" ColumnName="CVT_Address_Duration" />
+          <ScalarProperty Name="CVT_Address_ID" ColumnName="CVT_Address_ID" />
+          <ScalarProperty Name="CVT_GAP_Between" ColumnName="CVT_GAP_Between" />
+          <ScalarProperty Name="CVT_GAP_Address" ColumnName="CVT_GAP_Address" />
+          <ScalarProperty Name="CVT_GAP_Type" ColumnName="CVT_GAP_Type" />
+          <ScalarProperty Name="CVT_Mandatory_Address" ColumnName="CVT_Mandatory_Address" />
+          <ScalarProperty Name="CVT_Mandatory_Court_Address" ColumnName="CVT_Mandatory_Court_Address" />
+          <ScalarProperty Name="CVT_Current_Employment" ColumnName="CVT_Current_Employment" />
+          <ScalarProperty Name="CVT_CurrentEmployment_Company" ColumnName="CVT_CurrentEmployment_Company" />
+          <ScalarProperty Name="CVT_Previous_Employment" ColumnName="CVT_Previous_Employment" />
+          <ScalarProperty Name="CVT_Previous_Employment_Company" ColumnName="CVT_Previous_Employment_Company" />
+          <ScalarProperty Name="CVT_Court_Date" ColumnName="CVT_Court_Date" />
+          <ScalarProperty Name="CVT_Tennessee" ColumnName="CVT_Tennessee" />
+          <ScalarProperty Name="CVT_Drug_Test" ColumnName="CVT_Drug_Test" />
+          <ScalarProperty Name="CVT_Court_Check" ColumnName="CVT_Court_Check" />
+          <ScalarProperty Name="CVT_Database_GSA" ColumnName="CVT_Database_GSA" />
+          <ScalarProperty Name="CVT_Database_OIG" ColumnName="CVT_Database_OIG" />
+          <ScalarProperty Name="CVT_Identity" ColumnName="CVT_Identity" />
+          <ScalarProperty Name="Previos_Principle_Company_Address" ColumnName="Previos_Principle_Company_Address" />
+          <ScalarProperty Name="Previous_Principle_Company" ColumnName="Previous_Principle_Company" />
+          <ScalarProperty Name="Other_Address_Time_Period" ColumnName="Other_Address_Time_Period" />
+          <ScalarProperty Name="Other_Address_ID" ColumnName="Other_Address_ID" />
+          <ScalarProperty Name="Other_Address_Pincode" ColumnName="Other_Address_Pincode" />
+          <ScalarProperty Name="Other_Address_State" ColumnName="Other_Address_State" />
+          <ScalarProperty Name="Other_Address_Nature_Location" ColumnName="Other_Address_Nature_Location" />
+          <ScalarProperty Name="Other_Address_Country_Name" ColumnName="Other_Address_Country_Name" />
+          <ScalarProperty Name="Other_Address_City" ColumnName="Other_Address_City" />
+          <ScalarProperty Name="Other_Address__Address_Line2" ColumnName="Other_Address__Address_Line2" />
+          <ScalarProperty Name="Other_Address_Address_Line1" ColumnName="Other_Address_Address_Line1" />
+          <ScalarProperty Name="Professional_Reference_ID" ColumnName="Professional_Reference_ID" />
+          <ScalarProperty Name="Professional_Reference_Mobile" ColumnName="Professional_Reference_Mobile" />
+          <ScalarProperty Name="Professional_Reference_Company_Name" ColumnName="Professional_Reference_Company_Name" />
+          <ScalarProperty Name="Professional_Reference_Email" ColumnName="Professional_Reference_Email" />
+          <ScalarProperty Name="Professional_Reference_Designation" ColumnName="Professional_Reference_Designation" />
+          <ScalarProperty Name="Professional_Reference_Name" ColumnName="Professional_Reference_Name" />
+          <ScalarProperty Name="Gap_Address" ColumnName="Gap_Address" />
+          <ScalarProperty Name="GapBetween" ColumnName="GapBetween" />
+          <ScalarProperty Name="Prev_Role_Description" ColumnName="Prev_Role_Description" />
+          <ScalarProperty Name="GAP_Reason" ColumnName="GAP_Reason" />
+          <ScalarProperty Name="Prev_HR_Email" ColumnName="Prev_HR_Email" />
+          <ScalarProperty Name="Prev_Supervisor_Home_Manager_Phone" ColumnName="Prev_Supervisor_Home_Manager_Phone" />
+          <ScalarProperty Name="Prev_Supervisor_Home_Manager_Name" ColumnName="Prev_Supervisor_Home_Manager_Name" />
+          <ScalarProperty Name="Prev_Fax_No" ColumnName="Prev_Fax_No" />
+          <ScalarProperty Name="Prev_Employee_Id" ColumnName="Prev_Employee_Id" />
+          <ScalarProperty Name="Prev_city" ColumnName="Prev_city" />
+          <ScalarProperty Name="Prev_Leaving_Reason" ColumnName="Prev_Leaving_Reason" />
+          <ScalarProperty Name="Prev_Zipcode" ColumnName="Prev_Zipcode" />
+          <ScalarProperty Name="Prev_HR_Phone" ColumnName="Prev_HR_Phone" />
+          <ScalarProperty Name="Prev_HR_Name" ColumnName="Prev_HR_Name" />
+          <ScalarProperty Name="Prev_Supervisor_Home_manager_Email" ColumnName="Prev_Supervisor_Home_manager_Email" />
+          <ScalarProperty Name="Prev_Supervisor_Home_manager_Title" ColumnName="Prev_Supervisor_Home_manager_Title" />
+          <ScalarProperty Name="Prev_Employee_Phone" ColumnName="Prev_Employee_Phone" />
+          <ScalarProperty Name="Prev_Employment_Type" ColumnName="Prev_Employment_Type" />
+          <ScalarProperty Name="PG_University" ColumnName="PG_University" />
+          <ScalarProperty Name="ExpressRequestID" ColumnName="ExpressRequestID" />
+          <ScalarProperty Name="responseId" ColumnName="responseId" />
+          <ScalarProperty Name="LOA_Status" ColumnName="LOA_Status" />
+          <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="longest_stay_address" ColumnName="longest_stay_address" />
+          <ScalarProperty Name="permanent_address" ColumnName="permanent_address" />
+          <ScalarProperty Name="current_address" ColumnName="current_address" />
+          <ScalarProperty Name="mobile_number" ColumnName="mobile_number" />
+          <ScalarProperty Name="nationality" ColumnName="nationality" />
+          <ScalarProperty Name="father_name" ColumnName="father_name" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="employment_type_cvt" ColumnName="employment_type_cvt" />
+          <ScalarProperty Name="employment_type_ut" ColumnName="employment_type_ut" />
+          <ScalarProperty Name="id_cvt" ColumnName="id_cvt" />
+          <ScalarProperty Name="id_ut" ColumnName="id_ut" />
+          <ScalarProperty Name="company_name_cvt" ColumnName="company_name_cvt" />
+          <ScalarProperty Name="company_name_ut" ColumnName="company_name_ut" />
+          <ScalarProperty Name="reference_type_cvt" ColumnName="reference_type_cvt" />
+          <ScalarProperty Name="reference_type_ut" ColumnName="reference_type_ut" />
+          <ScalarProperty Name="degree_type_cvt" ColumnName="degree_type_cvt" />
+          <ScalarProperty Name="degree_type_ut" ColumnName="degree_type_ut" />
+          <ScalarProperty Name="college_cvt" ColumnName="college_cvt" />
+          <ScalarProperty Name="college_ut" ColumnName="college_ut" />
+          <ScalarProperty Name="actual_case_created" ColumnName="actual_case_created" />
+          <ScalarProperty Name="tensse" ColumnName="tensse" />
+          <ScalarProperty Name="account_name" ColumnName="account_name" />
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="candidate_id" ColumnName="candidate_id" />
+          <ScalarProperty Name="associate_id" ColumnName="associate_id" />
+          <ScalarProperty Name="request_id" ColumnName="request_id" />
+          <ScalarProperty Name="doj" ColumnName="doj" />
+          <ScalarProperty Name="project_name" ColumnName="project_name" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="specification" ColumnName="specification" />
+          <ScalarProperty Name="package" ColumnName="package" />
+          <ScalarProperty Name="bvg_type" ColumnName="bvg_type" />
+          <ScalarProperty Name="client_ref_no" ColumnName="client_ref_no" />
+          <ScalarProperty Name="candidate_name" ColumnName="candidate_name" />
+          <ScalarProperty Name="clientcode" ColumnName="clientcode" />
+          <ScalarProperty Name="cognizent_tech_solution" ColumnName="cognizent_tech_solution" />
+          <ScalarProperty Name="queue_request_id" ColumnName="queue_request_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

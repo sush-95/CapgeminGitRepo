@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fadv_touchlessModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_college_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reqid" Type="bigint" />
+    <Property Name="resid" Type="bigint" />
+    <Property Name="college" Type="varchar" MaxLength="2000" />
+    <Property Name="degree" Type="varchar" MaxLength="200" />
+    <Property Name="field_source" Type="varchar" MaxLength="100" />
+    <Property Name="active" Type="tinyint" Nullable="false" />
+    <Property Name="createdon" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_config_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="configstring" Type="varchar" MaxLength="1000" />
+    <Property Name="configtype" Type="varchar" MaxLength="45" />
+    <Property Name="active" Type="tinyint" Nullable="false" />
+    <Property Name="createdon" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResponseQueue" Type="varchar" MaxLength="100" />
+    <Property Name="RequestQueue" Type="varchar" MaxLength="100" />
+    <Property Name="FileName" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tbl_document_data">
+    <Key>
+      <PropertyRef Name="Document_Data_Entry_ID" />
+      <PropertyRef Name="PartitionKey" />
+    </Key>
+    <Property Name="Document_Data_Entry_ID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestID" Type="ubigint" Nullable="false" />
+    <Property Name="DocumentID" Type="umediumint" />
+    <Property Name="Document_Version" Type="usmallint" Nullable="false" />
+    <Property Name="Data_Sequence" Type="usmallint" />
+    <Property Name="JSON_Data" Type="longtext" />
+    <Property Name="Date_Created" Type="datetime" Precision="0" />
+    <Property Name="Date_Modified" Type="datetime" Precision="0" />
+    <Property Name="PartitionKey" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_document_upload">
+    <Key>
+      <PropertyRef Name="UploadID" />
+      <PropertyRef Name="PartitionKey" />
+    </Key>
+    <Property Name="UploadID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Document_Path" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="Requestid" Type="ubigint" Nullable="false" />
+    <Property Name="Date_Created" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Date_Modified" Type="datetime" Precision="0" />
+    <Property Name="PartitionKey" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_exception_log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="exception_log" Type="text" />
+    <Property Name="function_name" Type="varchar" MaxLength="2000" />
+    <Property Name="create_date" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_initiation_tracker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="request_id" Type="varchar" MaxLength="100" />
+    <Property Name="req_date" Type="varchar" MaxLength="100" />
+    <Property Name="candidate_id" Type="varchar" MaxLength="1000" />
+    <Property Name="associate_id" Type="varchar" MaxLength="1000" />
+    <Property Name="bgv_type" Type="varchar" MaxLength="1000" />
+    <Property Name="package" Type="varchar" MaxLength="1000" />
+    <Property Name="account" Type="varchar" MaxLength="1000" />
+    <Property Name="name" Type="varchar" MaxLength="1000" />
+    <Property Name="allocated_to" Type="varchar" MaxLength="1000" />
+    <Property Name="docs_download" Type="varchar" MaxLength="1000" />
+    <Property Name="status" Type="varchar" MaxLength="1000" />
+    <Property Name="crn" Type="varchar" MaxLength="1000" />
+    <Property Name="creation_date" Type="varchar" MaxLength="500" />
+    <Property Name="drug_panel" Type="varchar" MaxLength="1000" />
+    <Property Name="req_date1" Type="varchar" MaxLength="100" />
+    <Property Name="active" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="tbl_input_request_data">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImportKey" Type="bigint" />
+    <Property Name="Request_ID" Type="varchar" MaxLength="500" />
+    <Property Name="Candidate_ID" Type="varchar" MaxLength="500" />
+    <Property Name="Associate_Id" Type="varchar" MaxLength="500" />
+    <Property Name="BGV_Type" Type="varchar" MaxLength="500" />
+    <Property Name="Name" Type="varchar" MaxLength="500" />
+    <Property Name="DOJ" Type="varchar" MaxLength="500" />
+    <Property Name="BU" Type="varchar" MaxLength="500" />
+    <Property Name="Department" Type="varchar" MaxLength="1000" />
+    <Property Name="Account_Group" Type="varchar" MaxLength="1000" />
+    <Property Name="Account" Type="varchar" MaxLength="1000" />
+    <Property Name="Project" Type="varchar" MaxLength="1000" />
+    <Property Name="Components" Type="varchar" MaxLength="1000" />
+    <Property Name="Pre_BGV_Initiated_Date" Type="varchar" MaxLength="500" />
+    <Property Name="CE_BGV_Initiated_Date" Type="varchar" MaxLength="500" />
+    <Property Name="CE_Available" Type="varchar" MaxLength="1000" />
+    <Property Name="Vendor_Status" Type="varchar" MaxLength="1000" />
+    <Property Name="Additional_Payment_Status" Type="varchar" MaxLength="1000" />
+    <Property Name="HR_POC" Type="varchar" MaxLength="1000" />
+    <Property Name="Work_Location" Type="varchar" MaxLength="1000" />
+    <Property Name="Report_uploaded_date" Type="varchar" MaxLength="500" />
+    <Property Name="Last_Updated_On" Type="varchar" MaxLength="500" />
+    <Property Name="Active" Type="tinyint" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_mislog_count">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filePath" Type="varchar" MaxLength="1000" />
+    <Property Name="rowscount" Type="bigint" />
+    <Property Name="createdOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_request_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="messageid" Type="varchar" MaxLength="100" />
+    <Property Name="json_text" Type="text" />
+    <Property Name="request_type" Type="varchar" MaxLength="45" />
+    <Property Name="createdOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_request_state_instance">
+    <Key>
+      <PropertyRef Name="RequestID" />
+      <PropertyRef Name="Sequence" />
+    </Key>
+    <Property Name="RequestID" Type="ubigint" Nullable="false" />
+    <Property Name="Sequence" Type="usmallint" Nullable="false" />
+    <Property Name="StateID" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="UserID" Type="bigint" />
+    <Property Name="Date_Created" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+    <Property Name="Comments" Type="varchar" MaxLength="500" />
+    <Property Name="Is_Current" Type="tinyint" />
+    <Property Name="IS_Review" Type="tinyint" />
+    <Property Name="PartitionKey" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_request_tracker">
+    <Key>
+      <PropertyRef Name="TrackerID" />
+    </Key>
+    <Property Name="RequestID" Type="bigint" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="TrackerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Json_Data" Type="mediumtext" Nullable="false" />
+    <Property Name="Queue_Flag" Type="int" />
+    <Property Name="Operation_Date" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="tbl_requests">
+    <Key>
+      <PropertyRef Name="RequestID" />
+      <PropertyRef Name="PartitionKey" />
+    </Key>
+    <Property Name="RequestID" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent_RequestID" Type="ubigint" />
+    <Property Name="ClientID" Type="int" />
+    <Property Name="CRN_Number" Type="varchar" MaxLength="1000" />
+    <Property Name="First_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Middle_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Client_Ref_No" Type="varchar" MaxLength="500" />
+    <Property Name="Case_Date" Type="datetime" Precision="0" />
+    <Property Name="Subject_Detail" Type="varchar" MaxLength="1000" />
+    <Property Name="Subject_Type" Type="varchar" MaxLength="500" />
+    <Property Name="Is_Date_of_Birth" Type="tinyint" />
+    <Property Name="Date_Of_Birth" Type="datetime" Precision="0" />
+    <Property Name="Type_Of_Check" Type="varchar" MaxLength="500" />
+    <Property Name="Candidate_Authorization_Letter" Type="varchar" MaxLength="200" />
+    <Property Name="Package_Type" Type="varchar" MaxLength="1000" />
+    <Property Name="Srt_Data" Type="varchar" MaxLength="200" />
+    <Property Name="Date_Created" Type="datetime" Precision="0" Nullable="false" />
+    <Property Name="Date_Modified" Type="datetime" Precision="0" />
+    <Property Name="Is_Active" Type="bit" />
+    <Property Name="SBUID" Type="uint" />
+    <Property Name="LOA_Submitted" Type="varchar" MaxLength="45" />
+    <Property Name="BVF_Submitted" Type="varchar" MaxLength="45" />
+    <Property Name="CRN_CreateDate" Type="datetime" Precision="0" />
+    <Property Name="PartitionKey" Type="tinyint" Nullable="false" />
+    <Property Name="JSON_Data" Type="varchar" MaxLength="50000" />
+    <Property Name="status_message" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tbl_response_detail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="request_id" Type="bigint" />
+    <Property Name="response_json" Type="text" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message_id" Type="varchar" MaxLength="200" />
+    <Property Name="service_id" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="tbl_sbu_master">
+    <Key>
+      <PropertyRef Name="SBUID" />
+    </Key>
+    <Property Name="SBUID" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SBU_Name" Type="varchar" MaxLength="2000" />
+    <Property Name="ClientID" Type="uint" />
+  </EntityType>
+  <EntityType Name="tbl_yettostart_casecreation_data">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="queue_request_id" Type="bigint" />
+    <Property Name="cognizent_tech_solution" Type="varchar" MaxLength="1000" />
+    <Property Name="clientcode" Type="varchar" MaxLength="200" />
+    <Property Name="candidate_name" Type="varchar" MaxLength="200" />
+    <Property Name="client_ref_no" Type="varchar" MaxLength="200" />
+    <Property Name="bvg_type" Type="varchar" MaxLength="1000" />
+    <Property Name="package" Type="varchar" MaxLength="1000" />
+    <Property Name="specification" Type="varchar" MaxLength="2000" />
+    <Property Name="project_id" Type="varchar" MaxLength="200" />
+    <Property Name="project_name" Type="varchar" MaxLength="200" />
+    <Property Name="doj" Type="varchar" MaxLength="200" />
+    <Property Name="request_id" Type="varchar" MaxLength="100" />
+    <Property Name="associate_id" Type="varchar" MaxLength="100" />
+    <Property Name="candidate_id" Type="varchar" MaxLength="100" />
+    <Property Name="employee_id" Type="varchar" MaxLength="100" />
+    <Property Name="account_name" Type="varchar" MaxLength="200" />
+    <Property Name="tensse" Type="varchar" MaxLength="200" />
+    <Property Name="actual_case_created" Type="varchar" MaxLength="200" />
+    <Property Name="college_ut" Type="text" />
+    <Property Name="college_cvt" Type="text" />
+    <Property Name="degree_type_ut" Type="text" />
+    <Property Name="degree_type_cvt" Type="text" />
+    <Property Name="reference_type_ut" Type="text" />
+    <Property Name="reference_type_cvt" Type="text" />
+    <Property Name="company_name_ut" Type="text" />
+    <Property Name="company_name_cvt" Type="text" />
+    <Property Name="id_ut" Type="text" />
+    <Property Name="id_cvt" Type="text" />
+    <Property Name="employment_type_ut" Type="text" />
+    <Property Name="employment_type_cvt" Type="text" />
+    <Property Name="first_name" Type="varchar" MaxLength="200" />
+    <Property Name="last_name" Type="varchar" MaxLength="200" />
+    <Property Name="date_of_birth" Type="varchar" MaxLength="100" />
+    <Property Name="father_name" Type="varchar" MaxLength="200" />
+    <Property Name="nationality" Type="varchar" MaxLength="100" />
+    <Property Name="mobile_number" Type="varchar" MaxLength="100" />
+    <Property Name="current_address" Type="text" />
+    <Property Name="permanent_address" Type="text" />
+    <Property Name="longest_stay_address" Type="text" />
+    <Property Name="active" Type="tinyint" Nullable="false" />
+    <Property Name="createdOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LOA_Status" Type="varchar" MaxLength="45" />
+    <Property Name="responseId" Type="bigint" />
+    <Property Name="ExpressRequestID" Type="bigint" />
+    <Property Name="PG_University" Type="text" />
+    <Property Name="Prev_Employment_Type" Type="text" />
+    <Property Name="Prev_Employee_Phone" Type="text" />
+    <Property Name="Prev_Supervisor_Home_manager_Title" Type="text" />
+    <Property Name="Prev_Supervisor_Home_manager_Email" Type="text" />
+    <Property Name="Prev_HR_Name" Type="text" />
+    <Property Name="Prev_HR_Phone" Type="text" />
+    <Property Name="Prev_Zipcode" Type="text" />
+    <Property Name="Prev_Leaving_Reason" Type="text" />
+    <Property Name="Prev_city" Type="text" />
+    <Property Name="Prev_Employee_Id" Type="text" />
+    <Property Name="Prev_Fax_No" Type="text" />
+    <Property Name="Prev_Supervisor_Home_Manager_Name" Type="text" />
+    <Property Name="Prev_Supervisor_Home_Manager_Phone" Type="text" />
+    <Property Name="Prev_HR_Email" Type="text" />
+    <Property Name="GAP_Reason" Type="text" />
+    <Property Name="Prev_Role_Description" Type="text" />
+    <Property Name="GapBetween" Type="text" />
+    <Property Name="Gap_Address" Type="text" />
+    <Property Name="Professional_Reference_Name" Type="text" />
+    <Property Name="Professional_Reference_Designation" Type="text" />
+    <Property Name="Professional_Reference_Email" Type="text" />
+    <Property Name="Professional_Reference_Company_Name" Type="text" />
+    <Property Name="Professional_Reference_Mobile" Type="text" />
+    <Property Name="Professional_Reference_ID" Type="text" />
+    <Property Name="Other_Address_Address_Line1" Type="text" />
+    <Property Name="Other_Address__Address_Line2" Type="text" />
+    <Property Name="Other_Address_City" Type="text" />
+    <Property Name="Other_Address_Country_Name" Type="text" />
+    <Property Name="Other_Address_Nature_Location" Type="text" />
+    <Property Name="Other_Address_State" Type="text" />
+    <Property Name="Other_Address_Pincode" Type="text" />
+    <Property Name="Other_Address_ID" Type="text" />
+    <Property Name="Other_Address_Time_Period" Type="text" />
+    <Property Name="Previous_Principle_Company" Type="text" />
+    <Property Name="Previos_Principle_Company_Address" Type="text" />
+    <Property Name="CVT_Identity" Type="text" />
+    <Property Name="CVT_Database_OIG" Type="text" />
+    <Property Name="CVT_Database_GSA" Type="text" />
+    <Property Name="CVT_Court_Check" Type="text" />
+    <Property Name="CVT_Drug_Test" Type="text" />
+    <Property Name="CVT_Tennessee" Type="text" />
+    <Property Name="CVT_Court_Date" Type="text" />
+    <Property Name="CVT_Previous_Employment_Company" Type="text" />
+    <Property Name="CVT_Previous_Employment" Type="text" />
+    <Property Name="CVT_CurrentEmployment_Company" Type="text" />
+    <Property Name="CVT_Current_Employment" Type="text" />
+    <Property Name="CVT_Mandatory_Court_Address" Type="text" />
+    <Property Name="CVT_Mandatory_Address" Type="text" />
+    <Property Name="CVT_GAP_Type" Type="text" />
+    <Property Name="CVT_GAP_Address" Type="text" />
+    <Property Name="CVT_GAP_Between" Type="text" />
+    <Property Name="CVT_Address_ID" Type="text" />
+    <Property Name="CVT_Address_Duration" Type="text" />
+    <Property Name="CVT_Professional_ID" Type="text" />
+    <Property Name="CVT_Professional_Company" Type="text" />
+    <Property Name="CVT_Facis" Type="text" />
+    <Property Name="CVT_NSR" Type="text" />
+    <Property Name="CVT_SAM" Type="text" />
+    <Property Name="CVT_OFAC" Type="text" />
+    <Property Name="Diploma_CVT_Type" Type="text" />
+    <Property Name="Diploma_CVT_Deatils" Type="text" />
+    <Property Name="Twelve_CVT_Type" Type="text" />
+    <Property Name="Twelve_CVT_Details" Type="text" />
+    <Property Name="Tenth_CVT_Type" Type="text" />
+    <Property Name="Tenth_CVT_Details" Type="text" />
+    <Property Name="Longest_Stay_Address_UT" Type="text" />
+    <Property Name="Diploma_UT_DegreeType" Type="text" />
+    <Property Name="Diploma_UT_EducationPeriod" Type="text" />
+    <Property Name="Diploma_UT_College" Type="text" />
+    <Property Name="Diploma_UT_University" Type="text" />
+    <Property Name="Diploma_UT_Percentage" Type="text" />
+    <Property Name="Diploma_UT_Education_Type" Type="text" />
+    <Property Name="Longest_Stay_Address_POS_UT" Type="text" />
+    <Property Name="UT_Permanent_Address_POS" Type="text" />
+    <Property Name="tbl_yettostart_casecreation_datacol" Type="text" />
+    <Property Name="UT_Current_Address_POS" Type="text" />
+    <Property Name="UT_Nature_Of_Location_Current" Type="text" />
+    <Property Name="UT_Nature_Of_Location_Permanent" Type="text" />
+  </EntityType>
+  <EntityContainer Name="fadv_touchlessModelStoreContainer">
+    <EntitySet Name="tbl_college_details" EntityType="Self.tbl_college_details" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_config_value" EntityType="Self.tbl_config_value" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_document_data" EntityType="Self.tbl_document_data" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_document_upload" EntityType="Self.tbl_document_upload" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_exception_log" EntityType="Self.tbl_exception_log" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_initiation_tracker" EntityType="Self.tbl_initiation_tracker" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_input_request_data" EntityType="Self.tbl_input_request_data" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_mislog_count" EntityType="Self.tbl_mislog_count" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_request_details" EntityType="Self.tbl_request_details" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_request_state_instance" EntityType="Self.tbl_request_state_instance" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_request_tracker" EntityType="Self.tbl_request_tracker" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_requests" EntityType="Self.tbl_requests" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_response_detail" EntityType="Self.tbl_response_detail" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_sbu_master" EntityType="Self.tbl_sbu_master" Schema="fadv_touchless" store:Type="Tables" />
+    <EntitySet Name="tbl_yettostart_casecreation_data" EntityType="Self.tbl_yettostart_casecreation_data" Schema="fadv_touchless" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
