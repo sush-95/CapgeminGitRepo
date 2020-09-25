@@ -609,7 +609,7 @@ namespace DataAccess_Utility
             int Value = 0;
             try
             {
-              
+
                 Get_Data_Utility getObj = new Get_Data_Utility();
                 // string sql = "select count(*) from tbl_cap_gemini where Candidte_Id='" + Candidte_Id + "' and Check_Initiated='" + Check_Initiated + "' ;";
                 if ((getObj.GetListOnCandiadteID(Candidte_Id.Trim())).Count == 0)
@@ -630,15 +630,13 @@ namespace DataAccess_Utility
                     if (capList.Count != 0)
                     {
                         DateTime entrydate;
-                        DateTime.TryParse(capList[0].EntryDate, out entrydate);                     
-                        if ((DateTime.Now - entrydate).Days > 0&& (DateTime.Now - entrydate).Hours>6)
+                        DateTime.TryParse(capList[0].EntryDate, out entrydate);
+                        if ((DateTime.Now - entrydate).Days > 0 && (DateTime.Now - entrydate).Hours > 6)
                         {
                             Value = 2;
                         }
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -648,67 +646,9 @@ namespace DataAccess_Utility
             return Value;
         }
 
-        public int InsertWiproDetails(string Candidte_Id, string Employee_No, string Employee_Name, string Posting_Location, string Date_Of_Joining, string Fathers_Name, string Date_Of_Birth, string Employment_Type, string Check_Status, string Mapping_Date, string Check_Initiated, string POB_Location)
-        {
-            int Value = 0;
-            try
-            {
-                Get_Data_Utility getObj = new Get_Data_Utility();
-                string sql = "select count(*) from tbl_Wipro_details where Candidte_Id='" + Candidte_Id + "' and Check_Initiated='" + Check_Initiated + "' ;";
-                if (getObj.getIsExist(sql) == 0)
-                {
-                    List<tbl_college_details> lstObj = new List<tbl_college_details>();
-                    fadv_touchlessEntities entity = new fadv_touchlessEntities();
-                    string Query = "set SQL_SAFE_UPDATES = 0;";
-                    Value = entity.Database.ExecuteSqlCommand(Query);
-                    //Query = "update fadv_touchless.tbl_college_details a inner join (SELECT college, degree, count(*) as c FROM fadv_touchless.tbl_college_details where resId = " + response_id + " and reqId = " + request_id + " group by college, degree, active) b  on  a.college = b.college and a.degree = b.degree and field_source = 'ut' and b.c > 1 set a.active = 9;";
-                    Query = "insert into tbl_Wipro_details (Candidte_Id,Employee_No,Employee_Name,Posting_Location,Date_Of_Joining,Fathers_Name,Date_Of_Birth,Employment_Type,Check_Status,Mapping_Date,Check_Initiated,POB_Location,IsProcessed)" +
-                        " Values ('" + Candidte_Id + "','" + Employee_No + "','" + Employee_Name + "','" + Posting_Location + "','" + Date_Of_Joining + "','" + Fathers_Name + "','" + Date_Of_Birth + "','" + Employment_Type + "','" + Check_Status + "','" + Mapping_Date + "','" + Check_Initiated + "','" + POB_Location + "',0)";
 
-                    Value = entity.Database.ExecuteSqlCommand(Query);
-                    Value = 1;
-                }
 
-            }
-            catch (Exception ex)
-            {
-                Value = 0;
-                throw ex;
-            }
-            return Value;
-        }
-
-        public int InsertWiproCampusDetails(string ResumeID, string EmpID, string EmpName, string DateOfJoining, string FatherName, string DateofBirth, string ContactNumber, string EmailId, string Country, string Geo, string Qualification, string UniversityName, string CollegeName, string ModeOfEducation, string YearOfPassing, string AccountName, string AgencyNumber, string BGVInitiatedDate, string BGVInsuffRaisedDate, string InsuffComponent, string InsuffRaisedRemarks, string InsuffClearedRemarks, string BGVInsuffClearedDate, string BGVAssignedDate, string BGVQCRejectedDate, string BGVQCRejectedRemarks, string BGVSPOC, string AG_REPORTED_STATUS_BGV, string AG_REPORTED_DATE_BGV, string SLA, string AgencytoreverifyDate, string Agencytoreverifyremarks, string AgencyPlannedClosureDate, string PriorityFlag, string Division, string BGVStatus, string ActiveFlag, string BGV_Final_status)
-        {
-            int Value = 0;
-            try
-            {
-                Get_Data_Utility getObj = new Get_Data_Utility();
-
-                string sql = "select count(*) from tbl_wipro_campus_data where `Resume ID` like '%" + ResumeID + "%';";
-                if (getObj.getIsExist(sql) == 0)
-                {
-                    List<tbl_college_details> lstObj = new List<tbl_college_details>();
-                    fadv_touchlessEntities entity = new fadv_touchlessEntities();
-                    string Query = "set SQL_SAFE_UPDATES = 0;";
-                    Value = entity.Database.ExecuteSqlCommand(Query);
-                    //Query = "update fadv_touchless.tbl_college_details a inner join (SELECT college, degree, count(*) as c FROM fadv_touchless.tbl_college_details where resId = " + response_id + " and reqId = " + request_id + " group by college, degree, active) b  on  a.college = b.college and a.degree = b.degree and field_source = 'ut' and b.c > 1 set a.active = 9;";
-                    Query = "INSERT INTO `tbl_wipro_campus_data`(`Resume ID`,`Emp ID`,`Emp Name`,`Date Of Joining`,`Father Name`,`Date of Birth`,`Contact Number`,`Email Id`,`Country`,`Geo`,`Qualification`,`University Name`,`College Name`,`Mode Of Education`,`Year Of Passing`,`Account Name`,`Agency Number`,`BGV Initiated Date`,`BGV Insuff Raised Date`,`Insuff Component`,`Insuff Raised Remarks`,`Insuff Cleared Remarks`,`BGV Insuff Cleared Date`,`BGV Assigned Date`,`BGV QC Rejected Date`,`BGV QC Rejected Remarks`,`BGV SPOC`,`AG_REPORTED_STATUS_BGV`,`AG_REPORTED_DATE_BGV`,`SLA`,`Agency to re-verify Date`,`Agency to re-verify remarks`,`Agency Planned Closure Date`,`Priority Flag`,`Division`,`BGV Status`,`Active Flag`,`BGV_Final_status`,`IspProcessed`)" +
-                        " Values ('" + ResumeID + "','" + EmpID + "','" + EmpName + "','" + DateOfJoining + "','" + FatherName + "','" + DateofBirth + "','" + ContactNumber + "','" + EmailId + "','" + Country + "','" + Geo + "','" + Qualification + "','" + UniversityName + "','" + CollegeName + "','" + ModeOfEducation + "','" + YearOfPassing + "','" + AccountName + "','" + AgencyNumber + "','" + BGVInitiatedDate + "','" + BGVInsuffRaisedDate + "','" + InsuffComponent + "','" + InsuffRaisedRemarks + "','" + InsuffClearedRemarks + "','" + BGVInsuffClearedDate + "','" + BGVAssignedDate + "','" + BGVQCRejectedDate + "','" + BGVQCRejectedRemarks + "','" + BGVSPOC + "','" + AG_REPORTED_STATUS_BGV + "','" + AG_REPORTED_DATE_BGV + "','" + SLA + "','" + AgencytoreverifyDate + "','" + Agencytoreverifyremarks + "','" + AgencyPlannedClosureDate + "','" + PriorityFlag + "','" + Division + "','" + BGVStatus + "','" + ActiveFlag + "','" + BGV_Final_status + "',0)";
-
-                    Value = entity.Database.ExecuteSqlCommand(Query);
-                    Value = 1;
-                }
-            }
-            catch (Exception ex)
-            {
-                Value = 0;
-                throw ex;
-            }
-            return Value;
-        }
-
-        public int UpdateCapgeminiRecord(string resumeID)
+        public int UpdateCapgeminiRecord(string resumeID, string BotName)
         {
             int Value = 0;
             try
@@ -717,7 +657,7 @@ namespace DataAccess_Utility
                 fadv_touchlessEntities entity = new fadv_touchlessEntities();
                 string Query = "set SQL_SAFE_UPDATES = 0;";
                 Value = entity.Database.ExecuteSqlCommand(Query);
-                Query = "update tbl_cap_gemini set Is_Processed=1 where  Candidate_ID='" + resumeID + "'";
+                Query = "update tbl_cap_gemini set Is_Processed=1,Last_updated_time='" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "',Bot_Name='" + BotName + "' where  Candidate_ID='" + resumeID + "';";
                 Value = entity.Database.ExecuteSqlCommand(Query);
                 Value = 1;
             }
@@ -728,9 +668,9 @@ namespace DataAccess_Utility
             }
             return Value;
         }
-     
-       
-        
+
+
+
 
 
     }

@@ -194,7 +194,8 @@ namespace Read_File_Processor
                     {
                         JObject resjsonobj = JObject.Parse(ResJson);
                         string candidateID = resjsonobj["data"][0]["taskSpecs"]["candidateId"].ToString().Trim();
-                        objDML.UpdateCapgeminiRecord(candidateID);
+                        string BotId = Read_Json_TagWise(ResJson, "metadata", "botId");
+                        objDML.UpdateCapgeminiRecord(candidateID,BotId);
                     }
                     else
                     {
@@ -203,6 +204,7 @@ namespace Read_File_Processor
                             tbl_request_details processData = entities.tbl_request_details.Where(x => x.json_text.Contains(requestId)).First();
                             string json = processData.json_text;
                             string attempt = Read_Json_TagWise(json, "metadata", "attempt");
+                            string BotId = Read_Json_TagWise(ResJson, "metadata", "botId");
                             if (attempt == "1")
                             {
                                 JObject rss = JObject.Parse(json);
@@ -217,6 +219,7 @@ namespace Read_File_Processor
                                 {
                                     string resumeno = (string)rss["data"][0]["taskSpecs"]["candidateId"];
                                     RabbitMQ_Utility objQueue = new RabbitMQ_Utility();
+                                    objDML.UpdateCapgeminiRecord(resumeno, BotId);
                                     string error;
                                     objDML.Add_Exception_Log("Capgemini: 2nd attempt for Candidate Id : : " + resumeno + " has been sent to rabbitMQ ", resumeno);
                                     objQueue.Rabbit_Send(updatedJson, RabbitMQ_Utility.RabbitMQRequestQueue, RabbitMQ_Utility.RabbitMQUrl, out error);
