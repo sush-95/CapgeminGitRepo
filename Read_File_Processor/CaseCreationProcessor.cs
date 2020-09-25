@@ -174,8 +174,8 @@ namespace Read_File_Processor
 
                 List<tbl_response_detail> lstResponse = obj.Get_Response_Data_ToBe_Process(FilePath_Container.FreshCase);
                 if (lstResponse.Count > 0)
-                { 
-                    string MessageId = "";                   
+                {
+                    string MessageId = "";
                     string ServiceId = "";
 
                     string ResJson = "";
@@ -188,11 +188,13 @@ namespace Read_File_Processor
                         ResJson = res.response_json;
                     }
                     string result = Read_Json_DataForCaseCreation(ResJson, "metadata", "status", "success");
-                    string requestId = Read_Json_TagWise(ResJson, "metadata", "requestId");                  
+                    string requestId = Read_Json_TagWise(ResJson, "metadata", "requestId");
                     fadv_touchlessEntities entit = new fadv_touchlessEntities();
                     if (result.ToLower() == "true")
                     {
-                      
+                        JObject resjsonobj = JObject.Parse(ResJson);
+                        string candidateID = resjsonobj["data"][0]["taskSpecs"]["candidateId"].ToString().Trim();
+                        objDML.UpdateCapgeminiRecord(candidateID);
                     }
                     else
                     {
@@ -213,17 +215,13 @@ namespace Read_File_Processor
                                 int iDML = objDML.Add_Request_Json_Detail(queueMessageId, queueServiceId, output);
                                 if (iDML == 1)
                                 {
-                                   string resumeno=(string)rss["data"][0]["taskSpecs"]["candidateId"];
-                                   
+                                    string resumeno = (string)rss["data"][0]["taskSpecs"]["candidateId"];
                                     RabbitMQ_Utility objQueue = new RabbitMQ_Utility();
                                     string error;
-                                    
-                                    objDML.Add_Exception_Log("Capgemini: 2nd attempt for Candidate Id : : " + resumeno + " has been sent to rabbitMQ ",resumeno);
+                                    objDML.Add_Exception_Log("Capgemini: 2nd attempt for Candidate Id : : " + resumeno + " has been sent to rabbitMQ ", resumeno);
                                     objQueue.Rabbit_Send(updatedJson, RabbitMQ_Utility.RabbitMQRequestQueue, RabbitMQ_Utility.RabbitMQUrl, out error);
                                 }
                             }
-                         
-
                         }
                     }
                     objDML.Update_Response_Status(ResId);

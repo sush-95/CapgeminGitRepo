@@ -82,7 +82,7 @@ namespace Read_File_Processor
                     string responce_ServiceId = "";
 
                     responce_MessageId = Read_Json_TagWise(Response_Data, "metadata", "requestId");
-                    responce_ServiceId = Read_Json_TagWise(Response_Data, "metadata", "task");
+                    responce_ServiceId = Read_Json_Data_TagWise(Response_Data, "data", "taskName");
                     //responce_ServiceId = Read_Json_Data_TagWise(Response_Data, "metadata", "task");
                     //long reqId = Convert.ToInt64(Read_Json_Data_TagWise(Response_Data, "data", "taskSerialNo"));
                     // Add Response into Database //
@@ -107,42 +107,7 @@ namespace Read_File_Processor
             }
             return output;
         }
-        public string ConvertToXLSX(string filePath)
-        {
-            // logger.Info("Convert to XLSX started.");
-            DML_Utility objDML = new DML_Utility();
-
-            try
-            {
-                string directoryName = Path.GetDirectoryName(filePath);
-                string fileName = Path.GetFileNameWithoutExtension(filePath);
-                string[] files = new string[1];
-                string[] newFile = new string[1];
-                files = Directory.GetFiles(directoryName, fileName + ".xls");
-                var app = new Microsoft.Office.Interop.Excel.Application();
-                //foreach (string file in files)
-                //{
-                var wb = app.Workbooks.Open(files[0].ToString());
-                wb.SaveAs(Filename: files[0].ToString() + "x", FileFormat: Microsoft.Office.Interop.Excel.XlFileFormat.xlOpenXMLWorkbook);
-                wb.Close();
-                app.Quit();
-                File.Delete(filePath);
-                newFile = Directory.GetFiles(directoryName, fileName + ".xlsx");
-                filePath = Path.GetFullPath(newFile[0]).ToString();
-                // }
-                //logger.Info("Convert to XLSX completed.");
-                return filePath;
-            }
-            catch (Exception ex)
-            {
-                objDML.Add_Exception_Log("Wipro exception : " + "Before conversion", "");
-                //logger.Error("Error occured while converting xls to xslx. Error message: " + ex.Message.ToString());
-                throw ex;
-                //return null;
-            }
-
-        }
-
+   
         public void Execute_Json_YetToStart_Process_Download()
         {
             Get_Data_Utility obj = new Get_Data_Utility();
@@ -166,26 +131,35 @@ namespace Read_File_Processor
                         JArray DataArray = JArray.Parse(DownloadJboj["data"][0]["result"]["downloadDetails"].ToString());
                         foreach (var item in DataArray)
                         {
-                            string candidateId = item["candidateId"].ToString();
-                            string assigedTo = item["assigedTo"].ToString();
-                            string Activity = item["Activity"].ToString();
-                            string dueDate = item["dueDate"].ToString();
-                            string startDate = item["startDate"].ToString();
-                            string firstName = item["firstName"].ToString();
-                            string lastName = item["lastName"].ToString();
-                            string activityCreationDate = item["activityCreationDate"].ToString();
-                            string placeOfPosting = item["placeOfPosting"].ToString();
-                            string sbu = item["sbu"].ToString();
-                            string bgvAgency = item["bvgAgency"].ToString();
-                           int checkstat=objDML.InsertCapgeminiTable(candidateId, assigedTo, Activity, dueDate, startDate, firstName, lastName, activityCreationDate, placeOfPosting, sbu, bgvAgency, BoitId);
-
-                            if (checkstat == 2)
+                            try
                             {
+                                string candidateId = item["Candidate Id"].ToString();
+                                string assigedTo = item["Assigned To"].ToString();
+                                string Activity = item["Activity"].ToString();
+                                string dueDate = item["Due Date"].ToString();
+                                string startDate = item["Start Date"].ToString();
+                                string firstName = item["First Name"].ToString();
+                                string lastName = item["Last Name"].ToString();
+                                string activityCreationDate = item["Activity Creation Date"].ToString();
+                                string placeOfPosting = item["Place of Posting"].ToString();
+                                string sbu = item["SBU"].ToString();
+                                string bgvAgency = item["BGV Agency"].ToString();
+                                int checkstat = objDML.InsertCapgeminiTable(candidateId, assigedTo, Activity, dueDate, startDate, firstName, lastName, activityCreationDate, placeOfPosting, sbu, bgvAgency, BoitId);
 
-                                mailobj.SendMail("", "", "");
+                                if (checkstat == 2)
+                                {
+                                    mailobj.SendMail("", "Cap-Gemini Duplicate Case Entry-" + candidateId, GetBody(candidateId, firstName, lastName, activityCreationDate));
+                                    System.Threading.Thread.Sleep(1000);
+                                    objDML.Add_Exception_Log("Capgemini :Mail sent for duplicate CandidateID-:" + candidateId);
+                                }
                             }
+                            catch(Exception ex)
+                            {
+                                objDML.Add_Exception_Log("Capgemini :Json extraction failed   :" + item.ToString());
+                            }
+                            
                         }
-                        //  objDML.Update_Response_Status(res.id);
+                        objDML.Update_Response_Status(res.id);
                     }
 
 
@@ -193,7 +167,7 @@ namespace Read_File_Processor
                 List<tbl_cap_gemini> CapGeminiList = obj.Get_UnProcessedRequestsCapGemini();
                 foreach (var item in CapGeminiList)
                 {
-                    if (obj.IsCapgeminiDuplicate(item.Candidate_ID))
+                    if (!obj.IsCapgeminiDuplicate(item.Candidate_ID))
                     {
                         if (CheckIfRequestSentOrnot(item.Candidate_ID))
                         {
@@ -204,18 +178,27 @@ namespace Read_File_Processor
                             if (iDML == 1)
                             {
                                 bool ret = Write_JSON_TO_RABBIT_MQ(output);
-                                objDML.Add_Exception_Log("Capgemini: 1st attempt for CandidateId : " + item.Candidate_ID + " Sub- Login : Capgemini has been sent to rabbitMQ ", item.Candidate_ID);
+                                objDML.Add_Exception_Log("Capgemini: 1st attempt for CandidateId : " + item.Candidate_ID );
                                 output = ret ? "Success" : "Failed";
                             }
-                        }                       
+                        }
                     }
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                
+
             }
+        }
+
+        public string GetBody(string candidateID, string firstname, string lastname,string ActivityCreationDate)
+        {
+            string body = string.Empty;
+            body = "<html><head><style>table, th, td {border: 2px solid black;border-collapse: collapse;text-align: center;}table#t1 th {background-color: lightgray ;color: black;}</style></head><body><h4>Hi All,</h4><h4> The Duplicate case details are:</h4><table id='t1' cellpadding='5px'>" +
+                    "<tr><th>Date</th><th>Candidate ID </th><th> First Name </th><th> Last Name </th><th> Activity Creation Date</th></tr><tr><td>" +
+                    System.DateTime.Now.ToString("MM-dd-yyy") + "</td><td>" + candidateID + "</td><td>" + firstname + "</td><td>" + lastname + "</td><td>" + ActivityCreationDate + "</td></tr></table></body></html>";
+            return body;
         }
         public bool CheckIfRequestSentOrnot(string cadidateId)
         {

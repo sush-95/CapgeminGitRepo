@@ -46,16 +46,12 @@ namespace Read_File_Processor
         {
             try
             {
-                client = new SmtpClient(hostName, Convert.ToInt32(Port));
-                message = new MailMessage(this.fromMailid, this.toMailID, subject, body);
-                client.EnableSsl = true;
-                client.UseDefaultCredentials = false;
-                client.Credentials = new NetworkCredential(this.fromMailid, this.password);
+                client = new SmtpClient(hostName);
+                message = new MailMessage(this.fromMailid, this.toMailID);
+                client.UseDefaultCredentials = true;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                message.From = new MailAddress(fromMailid);
-                message.Subject = "Test";
-                message.Body = "Body";
-
+                message.Subject = subject;
+                message.Body = body;
                 if (!string.IsNullOrEmpty(attachmentFilename.Trim()))
                     message.Attachments.Add(new Attachment(attachmentFilename));
 
